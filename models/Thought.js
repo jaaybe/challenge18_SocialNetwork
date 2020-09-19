@@ -47,8 +47,8 @@ const ThoughtSchema = new Schema(
      username: {
        type: String,
        required: 'Please enter your Username'
-     }
-    //  reactions: []
+     },
+     reactions: [ReactionSchema]
     },
     {
       toJSON: {
