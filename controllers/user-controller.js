@@ -55,6 +55,7 @@ const userController = {
     deleteUser({ params }, res) {
         User.findOneAndDelete({ _id: params.id })
             .then(dbUserData => {
+                console.log(dbUserData)
                 if (!dbUserData) {
                     res.status(404).json({ message: 'No User found with this id!' });
                     return;
@@ -89,17 +90,11 @@ const userController = {
 
     // delete friend
     deleteFriend({ params }, res) {
-        User.findOne({ _id: params.userId }).then(user => {
-            if (user.friends.includes(params.friendId)) {
-                res.status(500).send('These users are already friends');
-            }
-        });
-
-        User.findOneAndUpdate({ _id: params.userId }, {
-            $push: {
-                friends: params.friendId
-            }
-        })
+        User.findOneAndUpdate(
+            { _id: params.userId},
+            { $pull: { friends:params.friendId }},
+            { new: true}
+        )
             .then(dbUserData => {
                 if (!dbUserData) {
                     res.status(404).json({ message: 'No User found with this id!' });
