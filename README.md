@@ -1,6 +1,6 @@
 # challenge18_SocialNetwork
 
-![screenshot](./assets/img/ch18 screenshot.png)
+![screenshot](./assets/img/screenshot.png)
 
 [JB BLOT - SOCIAL NETWORK API](https://github.com/jaaybe/challenge18_SocialNetwork)
 
